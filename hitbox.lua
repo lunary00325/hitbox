@@ -1,5 +1,4 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Luna7070/585438/refs/heads/main/ui"))()
-
 task.wait(0.8)
 
 local BALL_SIZE = 5.5
@@ -7,22 +6,16 @@ local saveFile = "hitbox_size.txt"
 local keyFile = "hitbox_menukey.txt"
 
 pcall(function()
-    if isfile(saveFile) then
-        local n = tonumber(readfile(saveFile))
-        if n and n >= 1 and n <= 12 then BALL_SIZE = n end
-    end
+    if isfile(saveFile) then local n=tonumber(readfile(saveFile)) if n and n>=1 and n<=12 then BALL_SIZE=n end end
 end)
 
 local MENU_KEY = 0x70
 pcall(function()
-    if isfile(keyFile) then
-        local k = tonumber(readfile(keyFile))
-        if k then MENU_KEY = k end
-    end
+    if isfile(keyFile) then local k=tonumber(readfile(keyFile)) if k then MENU_KEY=k end end
 end)
 
 local function getKeyName(kc)
-    local n = {[0x70]="F1",[0x71]="F2",[0x72]="F3",[0x73]="F4",[0x74]="F5",[0x75]="F6",[0x76]="F7",[0x77]="F8",[0x78]="F9",[0x79]="F10",[0x7A]="F11",[0x7B]="F12",[0x24]="Home",[0x2D]="Insert",[0x2E]="Delete"}
+    local n={[0x70]="F1",[0x71]="F2",[0x72]="F3",[0x73]="F4",[0x74]="F5",[0x75]="F6",[0x76]="F7",[0x77]="F8",[0x78]="F9",[0x79]="F10",[0x7A]="F11",[0x7B]="F12",[0x24]="Home",[0x2D]="Insert",[0x2E]="Delete"}
     return n[kc] or (kc>=65 and kc<=90 and string.char(kc) or "Key "..kc)
 end
 
